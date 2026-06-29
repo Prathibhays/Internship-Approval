@@ -1,49 +1,86 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
+import {
+  FaHome,
+  FaUserGraduate,
+  FaClipboardList,
+  FaBell,
+  FaRobot,
+  FaChartBar,
+  FaCheckCircle,
+  FaUserCircle,
+  FaSignOutAlt
+} from "react-icons/fa";
+
 const Sidebar = () => {
   return (
-    <div className="w-64 min-h-screen bg-gray-900 text-white">
+    <div className="sidebar">
 
-      <div className="p-6 text-2xl font-bold border-b border-gray-700">
-        Menu
-      </div>
+      <h2>PES ERP</h2>
 
-      <ul className="p-5 space-y-4">
+      <ul>
 
         <li>
-          <Link to="/dashboard" className="hover:text-blue-300">
+          <Link to="/dashboard">
+            <FaHome className="icon" />
             Dashboard
           </Link>
         </li>
 
         <li>
-          <Link to="/profile" className="hover:text-blue-300">
+          <Link to="/profile">
+            <FaUserGraduate className="icon" />
             Profile
           </Link>
         </li>
 
         <li>
-          <Link to="/internship-form" className="hover:text-blue-300">
+          <Link to="/internship-form">
+            <FaClipboardList className="icon" />
             Internship Form
           </Link>
         </li>
 
         <li>
-          <Link to="/status" className="hover:text-blue-300">
-            Status
+          <Link to="/status">
+            <FaCheckCircle className="icon" />
+            Internship Status
           </Link>
         </li>
 
         <li>
-          <Link to="/notifications" className="hover:text-blue-300">
+          <Link to="/notifications">
+            <FaBell className="icon" />
             Notifications
           </Link>
         </li>
 
         <li>
-          <Link to="/chatbot" className="hover:text-blue-300">
+          <Link to="/chatbot">
+            <FaRobot className="icon" />
             AI Chatbot
+          </Link>
+        </li>
+
+        <li>
+          <Link to="/reports">
+            <FaChartBar className="icon" />
+            Reports
+          </Link>
+        </li>
+
+        <li>
+          <Link to="/coordinator">
+            <FaUserCircle className="icon" />
+            Coordinator
+          </Link>
+        </li>
+
+        <li>
+          <Link to="/">
+            <FaSignOutAlt className="icon" />
+            Logout
           </Link>
         </li>
 

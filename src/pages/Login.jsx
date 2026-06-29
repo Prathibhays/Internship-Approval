@@ -1,7 +1,6 @@
 import { useState } from "react";
 
 export default function Login() {
-
   const [srn, setSrn] = useState("");
   const [password, setPassword] = useState("");
 
@@ -15,41 +14,45 @@ export default function Login() {
   };
 
   return (
-    <div className="flex justify-center items-center h-screen">
-
+    <div className="min-h-screen bg-[#08262D] flex items-center justify-center">
       <form
         onSubmit={login}
-        className="shadow-lg p-8 rounded-lg w-96"
+        className="bg-white w-[350px] rounded-md shadow-xl p-8"
       >
-
-        <h1 className="text-3xl font-bold mb-5">
-          Student Login
+        <h1 className="text-3xl font-bold text-gray-800 mb-6">
+          Log in
         </h1>
 
         <input
           type="text"
           placeholder="Enter SRN"
-          className="border p-2 w-full mb-4"
           value={srn}
-          onChange={(e)=>setSrn(e.target.value)}
+          onChange={(e) => setSrn(e.target.value)}
+          className="w-full border border-gray-300 rounded px-3 py-2 mb-4 outline-none focus:ring-2 focus:ring-cyan-500"
         />
 
         <input
           type="password"
           placeholder="Password"
-          className="border p-2 w-full mb-4"
           value={password}
-          onChange={(e)=>setPassword(e.target.value)}
+          onChange={(e) => setPassword(e.target.value)}
+          className="w-full border border-gray-300 rounded px-3 py-2 mb-5 outline-none focus:ring-2 focus:ring-cyan-500"
         />
 
         <button
-          className="bg-blue-700 text-white w-full p-2 rounded"
+          type="submit"
+          className="w-full bg-cyan-600 hover:bg-cyan-700 text-white py-2 rounded font-medium transition"
         >
-          Login
+          Log in
         </button>
 
+        <p className="text-center text-sm text-gray-500 mt-4">
+          or,{" "}
+          <span className="text-cyan-600 cursor-pointer hover:underline">
+            sign up
+          </span>
+        </p>
       </form>
-
     </div>
   );
 }

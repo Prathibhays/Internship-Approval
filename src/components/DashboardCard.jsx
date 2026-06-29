@@ -1,19 +1,26 @@
-import React from "react";
+import Navbar from "../components/Navbar";
+import Sidebar from "../components/Sidebar";
 
-const DashboardCard = ({ title, value, color }) => {
+function Dashboard() {
   return (
-    <div className={`${color} rounded-xl p-6 shadow-lg text-white`}>
+    <div className="app">
 
-      <h2 className="text-lg font-medium">
-        {title}
-      </h2>
+      <Sidebar />
 
-      <p className="text-4xl font-bold mt-3">
-        {value}
-      </p>
+      <div className="main">
+
+        <Navbar />
+
+        <div className="content">
+
+          <h1>Dashboard</h1>
+
+        </div>
+
+      </div>
 
     </div>
   );
-};
+}
 
-export default DashboardCard;
+export default Dashboard;;
