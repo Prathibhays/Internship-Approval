@@ -1,93 +1,261 @@
 import React from "react";
-import { Link } from "react-router-dom";
+
+import { NavLink } from "react-router-dom";
 
 import {
-  FaHome,
-  FaUserGraduate,
-  FaClipboardList,
-  FaBell,
-  FaRobot,
-  FaChartBar,
-  FaCheckCircle,
-  FaUserCircle,
-  FaSignOutAlt
+
+FaHome,
+
+FaUser,
+
+FaClipboardList,
+
+FaCheckCircle,
+
+FaBell,
+
+FaRobot,
+
+FaChartBar,
+
+FaSignOutAlt
+
 } from "react-icons/fa";
 
 const Sidebar = () => {
-  return (
-    <div className="sidebar">
 
-      <h2>PES ERP</h2>
+return (
 
-      <ul>
+<div className="w-64 bg-[#0D255F] text-white min-h-screen shadow-xl">
 
-        <li>
-          <Link to="/dashboard">
-            <FaHome className="icon" />
-            Dashboard
-          </Link>
-        </li>
+<div className="text-center py-6 border-b border-blue-800">
 
-        <li>
-          <Link to="/profile">
-            <FaUserGraduate className="icon" />
-            Profile
-          </Link>
-        </li>
+<h2 className="text-2xl font-bold">
 
-        <li>
-          <Link to="/internship-form">
-            <FaClipboardList className="icon" />
-            Internship Form
-          </Link>
-        </li>
+PES ERP
 
-        <li>
-          <Link to="/status">
-            <FaCheckCircle className="icon" />
-            Internship Status
-          </Link>
-        </li>
+</h2>
 
-        <li>
-          <Link to="/notifications">
-            <FaBell className="icon" />
-            Notifications
-          </Link>
-        </li>
+</div>
 
-        <li>
-          <Link to="/chatbot">
-            <FaRobot className="icon" />
-            AI Chatbot
-          </Link>
-        </li>
+<nav className="mt-4 flex flex-col">
 
-        <li>
-          <Link to="/reports">
-            <FaChartBar className="icon" />
-            Reports
-          </Link>
-        </li>
+<NavLink
 
-        <li>
-          <Link to="/coordinator">
-            <FaUserCircle className="icon" />
-            Coordinator
-          </Link>
-        </li>
+to="/dashboard"
 
-        <li>
-          <Link to="/">
-            <FaSignOutAlt className="icon" />
-            Logout
-          </Link>
-        </li>
+className={({ isActive }) =>
 
-      </ul>
+`flex items-center gap-4 px-8 py-4 transition
 
-    </div>
-  );
+${
+
+isActive
+
+? "bg-orange-500"
+
+: "hover:bg-[#173d7a]"
+
+}`
+
+}
+
+>
+
+<FaHome />
+
+Dashboard
+
+</NavLink>
+
+<NavLink
+
+to="/profile"
+
+className={({ isActive }) =>
+
+`flex items-center gap-4 px-8 py-4
+
+${
+
+isActive
+
+? "bg-orange-500"
+
+: "hover:bg-[#173d7a]"
+
+}`
+
+}
+
+>
+
+<FaUser />
+
+Profile
+
+</NavLink>
+
+<NavLink
+
+to="/internship-form"
+
+className={({ isActive }) =>
+
+`flex items-center gap-4 px-8 py-4
+
+${
+
+isActive
+
+? "bg-orange-500"
+
+: "hover:bg-[#173d7a]"
+
+}`
+
+}
+
+>
+
+<FaClipboardList />
+
+Internship Form
+
+</NavLink>
+
+<NavLink
+
+to="/status"
+
+className={({ isActive }) =>
+
+`flex items-center gap-4 px-8 py-4
+
+${
+
+isActive
+
+? "bg-orange-500"
+
+: "hover:bg-[#173d7a]"
+
+}`
+
+}
+
+>
+
+<FaCheckCircle />
+
+Internship Status
+
+</NavLink>
+
+<NavLink
+
+to="/notifications"
+
+className={({ isActive }) =>
+
+`flex items-center gap-4 px-8 py-4
+
+${
+
+isActive
+
+? "bg-orange-500"
+
+: "hover:bg-[#173d7a]"
+
+}`
+
+}
+
+>
+
+<FaBell />
+
+Notifications
+
+</NavLink>
+
+<NavLink
+
+to="/chatbot"
+
+className={({ isActive }) =>
+
+`flex items-center gap-4 px-8 py-4
+
+${
+
+isActive
+
+? "bg-orange-500"
+
+: "hover:bg-[#173d7a]"
+
+}`
+
+}
+
+>
+
+<FaRobot />
+
+AI Chatbot
+
+</NavLink>
+
+<NavLink
+
+to="/reports"
+
+className={({ isActive }) =>
+
+`flex items-center gap-4 px-8 py-4
+
+${
+
+isActive
+
+? "bg-orange-500"
+
+: "hover:bg-[#173d7a]"
+
+}`
+
+}
+
+>
+
+<FaChartBar />
+
+Reports
+
+</NavLink>
+
+<NavLink
+
+to="/"
+
+className="flex items-center gap-4 px-8 py-4 mt-auto hover:bg-red-600"
+
+>
+
+<FaSignOutAlt />
+
+Logout
+
+</NavLink>
+
+</nav>
+
+</div>
+
+);
+
 };
 
 export default Sidebar;

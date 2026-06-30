@@ -1,106 +1,333 @@
 import React from "react";
+import {
+  FaBuilding,
+  FaUserTie,
+  FaCalendarAlt,
+  FaCheckCircle,
+  FaClock,
+  FaArrowLeft,
+  FaFileAlt,
+  FaDownload,
+  FaUniversity,
+} from "react-icons/fa";
+
+import "./InternshipStatus.css";
 
 const InternshipStatus = () => {
-  // Dummy data (replace with API response)
   const internship = {
     company: "Microsoft",
     role: "Software Development Intern",
     status: "Approved",
-    startDate: "01-07-2026",
-    endDate: "31-08-2026",
+    startDate: "01 July 2026",
+    endDate: "31 August 2026",
     coordinator: "Dr. Anitha",
     evaluation: "Pending",
+    credits: 4,
+    duration: "2 Months",
   };
 
-  const steps = [
-    { title: "Application Submitted", completed: true },
-    { title: "Coordinator Review", completed: true },
-    { title: "Approved", completed: true },
-    { title: "Evaluation Pending", completed: false },
+  const progress = 75;
+
+  const timeline = [
+    {
+      title: "Application Submitted",
+      date: "26 June 2026",
+      completed: true,
+    },
+    {
+      title: "Coordinator Review",
+      date: "27 June 2026",
+      completed: true,
+    },
+    {
+      title: "Approved",
+      date: "29 June 2026",
+      completed: true,
+    },
+    {
+      title: "Evaluation Pending",
+      date: "Waiting",
+      completed: false,
+    },
   ];
 
   return (
-    <div className="min-h-screen bg-gray-100 p-8">
-      <div className="max-w-5xl mx-auto bg-white shadow-lg rounded-xl p-8">
+    <div className="status-page">
 
-        <h1 className="text-3xl font-bold text-blue-700 mb-8">
-          Internship Status
-        </h1>
+      {/* Header */}
 
-        {/* Internship Details */}
-        <div className="grid md:grid-cols-2 gap-6 mb-10">
+      <div className="page-header">
 
-          <div className="bg-gray-50 p-6 rounded-lg shadow">
-            <h2 className="text-xl font-semibold text-blue-600 mb-4">
-              Internship Details
-            </h2>
+        <div>
 
-            <p><strong>Company:</strong> {internship.company}</p>
-            <p><strong>Role:</strong> {internship.role}</p>
-            <p><strong>Start Date:</strong> {internship.startDate}</p>
-            <p><strong>End Date:</strong> {internship.endDate}</p>
-          </div>
+          <h1>Internship Status</h1>
 
-          <div className="bg-gray-50 p-6 rounded-lg shadow">
-            <h2 className="text-xl font-semibold text-blue-600 mb-4">
-              Approval Details
-            </h2>
+          <p>
+            Track your internship approval, evaluation and overall progress.
+          </p>
 
-            <p>
-              <strong>Status:</strong>{" "}
-              <span className="text-green-600 font-bold">
-                {internship.status}
-              </span>
-            </p>
+        </div>
 
-            <p><strong>Coordinator:</strong> {internship.coordinator}</p>
-            <p><strong>Evaluation:</strong> {internship.evaluation}</p>
+        <button className="download-btn">
+
+          <FaDownload />
+
+          Download Letter
+
+        </button>
+
+      </div>
+
+      {/* Statistics */}
+
+      <div className="stats-grid">
+
+        <div className="stat-card">
+
+          <FaCheckCircle className="stat-icon green" />
+
+          <div>
+
+            <h3>Status</h3>
+
+            <span>Approved</span>
+
           </div>
 
         </div>
 
-        {/* Progress Timeline */}
-        <h2 className="text-2xl font-semibold text-blue-700 mb-6">
-          Progress Timeline
-        </h2>
+        <div className="stat-card">
 
-        <div className="space-y-5">
-          {steps.map((step, index) => (
-            <div key={index} className="flex items-center gap-4">
+          <FaCalendarAlt className="stat-icon orange" />
 
-              <div
-                className={`w-8 h-8 rounded-full flex items-center justify-center text-white ${
-                  step.completed ? "bg-green-500" : "bg-gray-400"
-                }`}
-              >
-                {step.completed ? "✓" : index + 1}
-              </div>
+          <div>
 
-              <div>
-                <p className="font-semibold">{step.title}</p>
-                <p className="text-sm text-gray-500">
-                  {step.completed ? "Completed" : "Waiting"}
-                </p>
-              </div>
+            <h3>Duration</h3>
 
-            </div>
-          ))}
+            <span>{internship.duration}</span>
+
+          </div>
+
         </div>
 
-        {/* Buttons */}
-        <div className="mt-10 flex gap-4">
+        <div className="stat-card">
 
-          <button className="bg-blue-600 hover:bg-blue-700 text-white px-6 py-2 rounded-lg">
-            View Internship Details
-          </button>
+          <FaUniversity className="stat-icon blue" />
 
-          <button className="bg-gray-600 hover:bg-gray-700 text-white px-6 py-2 rounded-lg">
-            Back to Dashboard
-          </button>
+          <div>
+
+            <h3>Credits</h3>
+
+            <span>{internship.credits}</span>
+
+          </div>
+
+        </div>
+
+        <div className="stat-card">
+
+          <FaClock className="stat-icon purple" />
+
+          <div>
+
+            <h3>Evaluation</h3>
+
+            <span>{internship.evaluation}</span>
+
+          </div>
 
         </div>
 
       </div>
+
+      {/* Main Grid */}
+
+      <div className="details-grid">
+
+        {/* Internship Details */}
+
+        <div className="card">
+
+          <div className="card-header">
+
+            <FaBuilding />
+
+            <h2>Internship Details</h2>
+
+          </div>
+
+          <div className="info-row">
+
+            <span>Company</span>
+
+            <strong>{internship.company}</strong>
+
+          </div>
+
+          <div className="info-row">
+
+            <span>Role</span>
+
+            <strong>{internship.role}</strong>
+
+          </div>
+
+          <div className="info-row">
+
+            <span>Start Date</span>
+
+            <strong>{internship.startDate}</strong>
+
+          </div>
+
+          <div className="info-row">
+
+            <span>End Date</span>
+
+            <strong>{internship.endDate}</strong>
+
+          </div>
+
+        </div>
+
+        {/* Approval */}
+
+        <div className="card">
+
+          <div className="card-header">
+
+            <FaUserTie />
+
+            <h2>Approval Details</h2>
+
+          </div>
+
+          <div className="info-row">
+
+            <span>Status</span>
+
+            <span className="badge approved">
+
+              Approved
+
+            </span>
+
+          </div>
+
+          <div className="info-row">
+
+            <span>Coordinator</span>
+
+            <strong>{internship.coordinator}</strong>
+
+          </div>
+
+          <div className="info-row">
+
+            <span>Evaluation</span>
+
+            <span className="badge pending">
+
+              Pending
+
+            </span>
+
+          </div>
+
+        </div>
+
+      </div>
+
+      {/* Progress */}
+
+      <div className="card progress-card">
+
+        <div className="card-header">
+
+          <FaClock />
+
+          <h2>Overall Progress</h2>
+
+        </div>
+
+        <div className="progress-bar">
+
+          <div
+            className="progress-fill"
+            style={{ width: `${progress}%` }}
+          ></div>
+
+        </div>
+
+        <p>{progress}% Completed</p>
+
+      </div>
+
+      {/* Timeline */}
+
+      <div className="card">
+
+        <div className="card-header">
+
+          <FaCheckCircle />
+
+          <h2>Approval Timeline</h2>
+
+        </div>
+
+        <div className="timeline">
+
+          {timeline.map((item, index) => (
+
+            <div className="timeline-item" key={index}>
+
+              <div
+                className={
+                  item.completed
+                    ? "circle completed"
+                    : "circle pending"
+                }
+              >
+                {item.completed ? "✓" : ""}
+              </div>
+
+              <div className="timeline-content">
+
+                <h3>{item.title}</h3>
+
+                <span>{item.date}</span>
+
+              </div>
+
+            </div>
+
+          ))}
+        </div>
+
+      </div>
+
+      {/* Buttons */}
+
+      <div className="button-group">
+
+        <button className="primary-btn">
+
+          <FaFileAlt />
+
+          View Internship Details
+
+        </button>
+
+        <button className="secondary-btn">
+
+          <FaArrowLeft />
+
+          Back to Dashboard
+
+        </button>
+
+      </div>
+
     </div>
   );
 };

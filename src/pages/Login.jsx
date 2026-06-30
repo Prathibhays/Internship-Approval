@@ -1,10 +1,23 @@
-import { useState } from "react";
+import React, { useState } from "react";
+import "./Login.css";
 
-export default function Login() {
+import Navbar from "../components/Navbar";
+import Footer from "../components/Footer";
+
+import {
+  FaUserGraduate,
+  FaUser,
+  FaLock,
+  FaEye,
+  FaEyeSlash,
+} from "react-icons/fa";
+
+const Login = () => {
   const [srn, setSrn] = useState("");
   const [password, setPassword] = useState("");
+  const [showPassword, setShowPassword] = useState(false);
 
-  const login = (e) => {
+  const handleLogin = (e) => {
     e.preventDefault();
 
     console.log({
@@ -14,45 +27,101 @@ export default function Login() {
   };
 
   return (
-    <div className="min-h-screen bg-[#08262D] flex items-center justify-center">
-      <form
-        onSubmit={login}
-        className="bg-white w-[350px] rounded-md shadow-xl p-8"
-      >
-        <h1 className="text-3xl font-bold text-gray-800 mb-6">
-          Log in
-        </h1>
+    <>
+      <Navbar />
 
-        <input
-          type="text"
-          placeholder="Enter SRN"
-          value={srn}
-          onChange={(e) => setSrn(e.target.value)}
-          className="w-full border border-gray-300 rounded px-3 py-2 mb-4 outline-none focus:ring-2 focus:ring-cyan-500"
-        />
+      <section className="login-page">
 
-        <input
-          type="password"
-          placeholder="Password"
-          value={password}
-          onChange={(e) => setPassword(e.target.value)}
-          className="w-full border border-gray-300 rounded px-3 py-2 mb-5 outline-none focus:ring-2 focus:ring-cyan-500"
-        />
+        <div className="overlay"></div>
 
-        <button
-          type="submit"
-          className="w-full bg-cyan-600 hover:bg-cyan-700 text-white py-2 rounded font-medium transition"
-        >
-          Log in
-        </button>
+        <div className="login-card">
 
-        <p className="text-center text-sm text-gray-500 mt-4">
-          or,{" "}
-          <span className="text-cyan-600 cursor-pointer hover:underline">
-            sign up
-          </span>
-        </p>
-      </form>
-    </div>
+          <div className="avatar">
+
+            <FaUserGraduate />
+
+          </div>
+
+          <h1>Student SIGN IN</h1>
+
+          <div className="orange-line"></div>
+
+          <form onSubmit={handleLogin}>
+
+            <div className="input-box">
+
+              <FaUser className="input-icon" />
+
+              <input
+                type="text"
+                placeholder="Enter SRN"
+                value={srn}
+                onChange={(e) => setSrn(e.target.value)}
+                required
+              />
+
+            </div>
+
+            <div className="input-box">
+
+              <FaLock className="input-icon" />
+
+              <input
+                type={showPassword ? "text" : "password"}
+                placeholder="Password"
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
+                required
+              />
+
+              <span
+                className="eye"
+                onClick={() => setShowPassword(!showPassword)}
+              >
+                {showPassword ? <FaEyeSlash /> : <FaEye />}
+              </span>
+
+            </div>
+
+            <div className="forgot">
+
+              <a href="/">Forgot Password?</a>
+
+            </div>
+
+            <button type="submit">
+
+              Log in
+
+            </button>
+
+            <div className="divider">
+
+              <span></span>
+
+              <p>or</p>
+
+              <span></span>
+
+            </div>
+
+            <p className="signup">
+
+              Don't have an account?
+
+              <a href="/"> Sign up</a>
+
+            </p>
+
+          </form>
+
+        </div>
+
+      </section>
+
+      <Footer />
+    </>
   );
-}
+};
+
+export default Login;
